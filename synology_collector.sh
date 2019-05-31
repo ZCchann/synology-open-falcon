@@ -20,6 +20,7 @@ do
 	curl -s -X POST -d "$($workdir/synology-net_in.sh $community "${host}" | python -m json.tool)" "$httpprex/v1/push" &
 	curl -s -X POST -d "$($workdir/synology-net_out.sh $community "${host}" | python -m json.tool)" "$httpprex/v1/push" &
 	curl -s -X POST -d "$($workdir/synology-raidstatus.sh $community "${host}" | python -m json.tool)" "$httpprex/v1/push" &
-
+	curl -s -X POST -d "$($workdir/synology-raidfreesize.sh $community "${host}" | python -m json.tool)" "$httpprex/v1/push
+" &
     sleep 1
 done
